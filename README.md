@@ -3,7 +3,7 @@ Private Operating System Simulation
 
 This is an academic project for bowie state university
 
-This application is intended to simulate a simply operating system as follows:
+This application is intended to simulate a simple operating system as follows:
 
 Ten processes are stored in main memory at an given time. 
 These processes will reference scripts written in a scripting langauge (TBD)
