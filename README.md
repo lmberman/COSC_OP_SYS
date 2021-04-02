@@ -15,6 +15,6 @@ B. Blocked Disk Queue - Those processed that are partially executed but require 
 
 A Memory Manager is used to manage a limited memory space and controls the execution of the processes via a paging approach.
 
-Each Page in memory has a max size of 128 bytes.
+Each Page in memory has a size of 128 bytes.
 
 
