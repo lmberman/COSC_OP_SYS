@@ -29,4 +29,8 @@ public class SimulatedProcess {
     public void setPageTable(PageTable pageTable){
         this.processControlBlock.setPageTable(pageTable);
     }
+
+    public PageTable getPageTable(){
+        return this.processControlBlock.getPageTable();
+    }
 }
