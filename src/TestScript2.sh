@@ -1,4 +1,5 @@
-We need to add some script
-In this file here
-For loops or some shell code would work
-This is optional
+for (( counter=10; counter>0; counter-- ))
+do
+echo  "External Fragmentation – total memory space exists to satisfy a request, but it is not contiguo"
+done
+printf "\n"
