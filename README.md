@@ -1,9 +1,6 @@
 # COSC_OP_SYS
 Private Operating System Simulation
 
-# COSC_OP_SYS
-Private Operating System Simulation
-
 This is an academic project for bowie state university
 
 This application is intended to simulate a simple operating system as follows:
