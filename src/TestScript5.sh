@@ -1,4 +1,5 @@
-We need to add some script
-In this file here
-For loops or some shell code would work
-This is optional
+for (( counter=10; counter>0; counter-- ))
+do
+echo  "Internal Fragmentation – allocated memory may be slightly larger than requested memory; this size difference is memory internal to a partition, but not being used"
+done
+printf "\n"
