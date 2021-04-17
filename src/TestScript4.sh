@@ -1,4 +1,5 @@
-We need to add some script
-In this file here
-For loops or some shell code would work
-This is optional
+for (( counter=10; counter>0; counter-- ))
+do
+echo  "Signals are used in UNIX systems to notify a process that a particular event has occurred"
+done
+printf "\n"
