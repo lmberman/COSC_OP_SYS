@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 
 /**
  * This class represents a scheduling queue
@@ -9,7 +10,7 @@ import java.util.NoSuchElementException;
  */
 public class SchedulingQueue {
 
-    private LinkedList<SimulatedProcess> processes;
+    private Queue<SimulatedProcess> processes;
 
     SchedulingQueue() {
         processes = new LinkedList<>();
@@ -21,7 +22,7 @@ public class SchedulingQueue {
 
     public SimulatedProcess pop() {
         try {
-            return processes.pop();
+            return processes.poll();
         } catch (NoSuchElementException e) {
             System.out.println("The queue is empty");
             return null;
@@ -29,12 +30,12 @@ public class SchedulingQueue {
     }
 
     public void push(SimulatedProcess process) {
-        processes.push(process);
+        processes.add(process);
     }
 
     public void print(){
         if(processes.isEmpty()){
-            System.out.println("    Queue is empty  ");
+            System.out.println("             Queue is empty  ");
         }
         for(SimulatedProcess process: processes) {
             System.out.println("             Process: " + process.getPid());
