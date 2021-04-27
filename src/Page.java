@@ -7,7 +7,7 @@
  */
 public class Page {
     private byte[] data;
-    private long frameId;
+    private int frameId;
     private int maxSize = 64;
 
     Page() {
@@ -31,11 +31,11 @@ public class Page {
         this.maxSize = maxSize;
     }
 
-    public long getFrameId() {
+    public int getFrameId() {
         return frameId;
     }
 
-    public void setFrameId(long frameId) {
+    public void setFrameId(int frameId) {
         this.frameId = frameId;
     }
 }

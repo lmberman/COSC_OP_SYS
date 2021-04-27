@@ -1,4 +1,7 @@
-import java.util.List;
+import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Base64;
 
 /**
  * Central Processing Unit to pull processes from Ready Queue, staging their pages into {@link MemoryManager#mainMemory},
@@ -6,13 +9,20 @@ import java.util.List;
  */
 public class CPU {
 
-    private List<Frame> executingFrames;
-
-    public List<Frame> getExecutingFrames() {
-        return executingFrames;
+    public void executeProcess(SimulatedProcess process, MemoryManager memoryManager) {
+        Instant start = Instant.now();
+        System.out.print("Pulling page frame from main memory and executing it at " + start);
+        Page nextPage = process.getNextPage();
+        Frame frame = memoryManager.getFrame(nextPage.getFrameId());
+        byte[] frameData = frame.getData();
+        String scriptLine = new String(frameData);
+        try {
+            Runtime.getRuntime().exec(scriptLine);
+        } catch (IOException ioException){
+        }
+        Instant end = Instant.now();
+        System.out.print("Completed frame execution at  " + end);
+        System.out.print("Duration(in ms): " + Duration.between(start, end).toMillis());
     }
 
-    public void setExecutingFrames(List<Frame> executingFrames) {
-        this.executingFrames = executingFrames;
-    }
 }

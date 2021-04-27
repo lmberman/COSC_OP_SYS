@@ -86,4 +86,8 @@ public class ProcessControlBlock {
     public void setPageTable(PageTable pageTable) {
         this.pageTable = pageTable;
     }
+
+    public Page getNextPage(){
+        return this.pageTable.pop();
+    }
 }

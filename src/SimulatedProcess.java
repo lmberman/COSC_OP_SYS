@@ -33,4 +33,12 @@ public class SimulatedProcess {
     public PageTable getPageTable(){
         return this.processControlBlock.getPageTable();
     }
+
+    public boolean isEmpty(){
+        return this.processControlBlock.getPageTable().getSize() == 0;
+    }
+
+    public Page getNextPage() {
+        return this.processControlBlock.getNextPage();
+    }
 }

@@ -3,7 +3,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -17,11 +16,11 @@ public class MemoryManager {
 
     private int maxNumOfProcesses = 10;
     private int currentNumOfProcesses;
-    private LinkedList<Frame> mainMemory;
+    private List<Frame> mainMemory;
 
     MemoryManager(){
         currentNumOfProcesses = 0;
-        mainMemory = new LinkedList<>();
+        mainMemory = new ArrayList<>();
     }
 
     public void increaseCurrentNumOfProcesses(){
@@ -30,6 +29,10 @@ public class MemoryManager {
 
     public boolean isMemoryFull(){
         return currentNumOfProcesses == maxNumOfProcesses;
+    }
+
+    public void decreaseProcessCount(){
+            currentNumOfProcesses--;
     }
 
     /**
@@ -43,7 +46,7 @@ public class MemoryManager {
             PageTable pageTable = new PageTable();
             File processScript = simulatedProcess.getProcessControlBlock().getScript();
             try {
-                FileInputStream fileInputStream = new FileInputStream(processScript);
+                FileInputStream fileInputStream = new FileInputStream(processScript.getAbsolutePath());
                 int dataLength = 0;
                 while (dataLength > - 1){
                     Page page = new Page();
@@ -55,6 +58,7 @@ public class MemoryManager {
                         pageTable.push(page);
                     }
                 }
+                fileInputStream.close();
                 simulatedProcess.setPageTable(pageTable);
             } catch (FileNotFoundException fileNotFoundException) {
                 System.out.println("File " + processScript.getName() + " can not be found. Unable to create Page Table");
@@ -62,9 +66,7 @@ public class MemoryManager {
                 System.out.println("Unable to read from file");
             }
             increaseCurrentNumOfProcesses();
-        } else {
-
-        }
+        } 
     }
 
     public void storeProcess(SimulatedProcess process){
@@ -81,7 +83,14 @@ public class MemoryManager {
         frame.setData(page.getData());
         // get the current index in main memory for which the frame will be stored
         int currentIndex = mainMemory.size();
-        mainMemory.push(frame);
+        mainMemory.add(frame);
         page.setFrameId(currentIndex);
+    }
+
+    /**
+     * Get frame from main memory at index i for the CPU to process
+     */
+    public Frame getFrame(int index){
+        return mainMemory.get(index);   
     }
 }

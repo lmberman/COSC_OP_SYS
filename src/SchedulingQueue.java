@@ -33,8 +33,15 @@ public class SchedulingQueue {
     }
 
     public void print(){
-        for(SimulatedProcess process: processes) {
-            System.out.print("Process Pid: " + process.getPid());
+        if(processes.isEmpty()){
+            System.out.println("    Queue is empty  ");
         }
+        for(SimulatedProcess process: processes) {
+            System.out.println("             Process: " + process.getPid());
+        }
+    }
+
+    public boolean isEmpty(){
+        return processes.size() == 0;
     }
 }

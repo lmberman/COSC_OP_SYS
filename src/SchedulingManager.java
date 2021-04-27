@@ -41,9 +41,29 @@ public class SchedulingManager {
      * Prints contents of queues to console
      */
     public void printQueues() {
-        System.out.println("Ready Queue:");
-       readyQueue.print();
-        System.out.println("Disk Blocked Queue:");
-       diskBlockedQueue.print();
+        System.out.println("    Ready Queue:    ");
+        readyQueue.print();
+        System.out.println("    Disk Blocked Queue: ");
+        diskBlockedQueue.print();
+    }
+
+    public SchedulingQueue getReadyQueue(){
+        return readyQueue;
+    }
+
+    public SchedulingQueue getBlockedQueue(){
+        return diskBlockedQueue;
+    }
+
+    public SimulatedProcess getNextReadyProcess() {
+        return readyQueue.pop();
+    }
+    
+    public boolean readyQueueIsEmpty(){
+        return readyQueue.isEmpty();
+    }
+
+    public boolean blockedQueueIsEmpty() {
+        return diskBlockedQueue.isEmpty();
     }
 }
