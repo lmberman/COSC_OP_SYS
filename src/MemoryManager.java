@@ -14,13 +14,23 @@ import java.util.List;
  */
 public class MemoryManager {
 
-    private int maxNumOfProcesses = 10;
+    private int maxNumOfProcesses;
     private int currentNumOfProcesses;
     private List<Frame> mainMemory;
+    private int frameAndPageSize;
 
     MemoryManager(){
+        this.maxNumOfProcesses = 10;
         currentNumOfProcesses = 0;
         mainMemory = new ArrayList<>();
+        frameAndPageSize = 64;
+    }
+
+    MemoryManager(int maxNumOfProcesses, int frameAndPageSize){
+        this.maxNumOfProcesses = maxNumOfProcesses;
+        currentNumOfProcesses = 0;
+        mainMemory = new ArrayList<>();
+        this.frameAndPageSize = frameAndPageSize;
     }
 
     public void increaseCurrentNumOfProcesses(){
@@ -49,7 +59,7 @@ public class MemoryManager {
                 FileInputStream fileInputStream = new FileInputStream(processScript.getAbsolutePath());
                 int dataLength = 0;
                 while (dataLength > - 1){
-                    Page page = new Page();
+                    Page page = new Page(frameAndPageSize);
                     dataLength = fileInputStream.read(page.getData(), 0, page.getMaxSize());
                     if(dataLength != -1) {
                         //store the page in main memory

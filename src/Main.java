@@ -1,19 +1,32 @@
 import java.io.File;
 
+/** 
+   @author Lindsei Berman
+   @author Cherrie Espineda
+**/
+
 public class Main {
 
-    public static void main(String[] args) {
-
-        MemoryManager memoryManager = new MemoryManager();
+    public static void main(String[] args) { 
+        System.out.println("This is our simple Operating System \"Janis\"!");
+        System.out.println("Here we goooooooooo.....=)");
+        int numOfProcesses = 20;
+        int maxProcessesInMemory = 10;
+        int pageSize = 64;
+        if(args.length == 3) {
+            numOfProcesses = Integer.parseInt(args[0]);
+            maxProcessesInMemory = Integer.parseInt(args[1]);
+            pageSize = Integer.parseInt(args[2]);
+        }
+        MemoryManager memoryManager = new MemoryManager(maxProcessesInMemory, pageSize);
         SchedulingManager schedulingManager = new SchedulingManager();
-        populateQueuesAndMemory(memoryManager, schedulingManager);   
+        populateQueuesAndMemory(memoryManager, schedulingManager, numOfProcesses);   
         beginExecution(memoryManager, schedulingManager);
     }
-    public static void populateQueuesAndMemory(MemoryManager memoryManager, SchedulingManager schedulingManager) {
-        System.out.println("This is our simple Operating System \"Janis\"!");
+    public static void populateQueuesAndMemory(MemoryManager memoryManager, SchedulingManager schedulingManager, int numOfProcesses) {
         int scriptNum = 1;
-        System.out.println("Creating 20 processes to execute");
-        for (int i = 0; i < 20; i++) {
+        System.out.println("Creating " + numOfProcesses +  " processes to execute");
+        for (int i = 0; i < numOfProcesses; i++) {
             SimulatedProcess process = new SimulatedProcess(i, new File("COSC_OP_SYS\\src\\TestScript" + scriptNum + ".sh"));
             if(memoryManager.isMemoryFull()){
                 schedulingManager.addProcessToDiskBlockedQueue(process);
@@ -47,7 +60,7 @@ public class Main {
             }
             schedulingManager.printQueues();
         }
-        schedulingManager.printQueues();
+        cpu.printClockDuration();
     }  
 }
 

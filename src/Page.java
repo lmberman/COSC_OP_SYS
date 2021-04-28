@@ -13,6 +13,13 @@ public class Page {
     Page() {
         data = new byte[maxSize];
         frameId = -1;
+        maxSize = 64;
+    }
+
+    Page(int maxSize) {
+        this.maxSize = maxSize;
+        data = new byte[maxSize];
+        frameId = -1;
     }
 
     public byte[] getData() {
@@ -23,19 +30,15 @@ public class Page {
         this.data = data;
     }
 
-    public int getMaxSize() {
-        return maxSize;
-    }
-
-    public void setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
-    }
-
     public int getFrameId() {
         return frameId;
     }
 
     public void setFrameId(int frameId) {
         this.frameId = frameId;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
     }
 }

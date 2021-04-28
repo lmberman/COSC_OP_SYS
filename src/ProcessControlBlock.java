@@ -1,5 +1,4 @@
 import java.io.File;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Class to symbolize the Process Control Block for a given Process
@@ -17,10 +16,7 @@ public class ProcessControlBlock {
 
     private long pid;
     private File script;
-    private long programCounter;
     private SchedulingQueue schedulingQueue;
-    private int baseRegIndex;
-    private int limitRegIndex = 64;
     private PageTable pageTable;
 
     ProcessControlBlock() { }
@@ -28,7 +24,6 @@ public class ProcessControlBlock {
     ProcessControlBlock(long pid, File script) {
         this.pid = pid;
         this.script = script;
-        this.programCounter = 0;
     }
 
     public long getPid() {
@@ -47,36 +42,12 @@ public class ProcessControlBlock {
         this.script = script;
     }
 
-    public long getProgramCounter() {
-        return programCounter;
-    }
-
-    public void setProgramCounter(long programCounter) {
-        this.programCounter = programCounter;
-    }
-
     public SchedulingQueue getSchedulingQueue() {
         return schedulingQueue;
     }
 
     public void setSchedulingQueue(SchedulingQueue schedulingQueue) {
         this.schedulingQueue = schedulingQueue;
-    }
-
-    public int getBaseRegIndex() {
-        return baseRegIndex;
-    }
-
-    public void setBaseRegIndex(int baseRegIndex) {
-        this.baseRegIndex = baseRegIndex;
-    }
-
-    public int getLimitRegIndex() {
-        return limitRegIndex;
-    }
-
-    public void setLimitRegIndex(int limitRegIndex) {
-        this.limitRegIndex = limitRegIndex;
     }
 
     public PageTable getPageTable() {
