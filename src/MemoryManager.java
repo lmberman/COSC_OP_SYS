@@ -7,10 +7,11 @@ import java.util.List;
 
 /**
  * This is the object which controls the memory allocation of the system
- * Memory is limited to 10 {@link SimulatedProcess}s at a time.
- * {@link SimulatedProcess}s sizes can range from single to multiple {@link Page}s
- * This means that at max 10 {@link SimulatedProcess}s can be in a ready state at any given time
- * and loaded to memory for processing
+ * Main Memory is limited to 10 {@link SimulatedProcess}s at a time.
+ * Elements of Main Memory are stored as {@link Frame}s
+ * 
+ * This class is in charge of paginating {@link SimulatedProcess}s file 
+ * and saves is corresponding {@link Frame}s
  */
 public class MemoryManager {
 
@@ -79,9 +80,6 @@ public class MemoryManager {
         } 
     }
 
-    public void storeProcess(SimulatedProcess process){
-    }
-
     /**
      * Converts a {@link Page} into a {@link Frame} to be stored in {@link MemoryManager#mainMemory}
      * Retrieves an index for the created {@link Frame} representing where it is stored in {@link MemoryManager#mainMemory}
@@ -99,6 +97,8 @@ public class MemoryManager {
 
     /**
      * Get frame from main memory at index i for the CPU to process
+     * @param index location in main memory for which to retrieve the desired {@link Frame}
+     * @return {@link Frame} stored at provided index
      */
     public Frame getFrame(int index){
         return mainMemory.get(index);   

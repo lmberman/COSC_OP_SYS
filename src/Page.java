@@ -1,7 +1,8 @@
 /**
  * Object to represent an individual {@link Page} of a given {@link SimulatedProcess}
  * <p>
- * This object contains a {@link Byte} array with a max size of 64 bytes
+ * This object contains a {@link Byte} array with a max size
+ * The max size of the array is defaulted to 64 but can be configured based on a value provided
  * <p>
  * It has a frameId which represents the frame id stored in main memory
  */

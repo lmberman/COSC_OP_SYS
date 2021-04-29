@@ -17,6 +17,10 @@ public class PageTable {
         return pages;
     }
 
+    /**
+     * Add a {@link Page} to the page table
+     * @param page {@link Page} to add
+     */
     public void push(Page page) {
         this.pages.push(page);
     }
@@ -25,6 +29,10 @@ public class PageTable {
         return pages.size();
     }
 
+    /**
+     * Retrieve the next page {@link Page} in the page table
+     * @return the retrieved {@link Page}
+     */
     public Page pop(){
         return this.pages.pop();
     }

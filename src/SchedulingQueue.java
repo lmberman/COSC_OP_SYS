@@ -20,6 +20,10 @@ public class SchedulingQueue {
         return processes.size();
     }
 
+    /**
+     * Removes next element from the process Queue
+     * @return next element {@link SimulatedProcess}
+     */
     public SimulatedProcess pop() {
         try {
             return processes.poll();
@@ -29,10 +33,19 @@ public class SchedulingQueue {
         }
     }
 
+    /**
+     * Adds a {@link SimulatedProcess} to the processes queue
+     * @param process {@link SimulatedProcess} to be added
+     */
     public void push(SimulatedProcess process) {
         processes.add(process);
     }
 
+    /**
+     * Prints the contents of the queue
+     * If the queue is empty "Queue is Empty" is printed
+     * Else each {@link SimulatedProcess} is printed to the out put with its corresponding pid
+     */
     public void print(){
         if(processes.isEmpty()){
             System.out.println("             Queue is empty  ");
@@ -42,6 +55,10 @@ public class SchedulingQueue {
         }
     }
 
+    /**
+     * Checks if the queue is empty by ensuring its size is equal to 0
+     * @return boolean value if queue size is equal to 0 
+     */
     public boolean isEmpty(){
         return processes.size() == 0;
     }

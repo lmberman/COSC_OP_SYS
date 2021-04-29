@@ -23,6 +23,15 @@ public class Main {
         populateQueuesAndMemory(memoryManager, schedulingManager, numOfProcesses);   
         beginExecution(memoryManager, schedulingManager);
     }
+
+    /**
+     * Paginates the first 10 {@link SimulatedProcess}s and store them in the Ready Queue {@link SchedulingQueue}
+     * Places remaining {@link SimulatedProcess}s in the Disk Blocked Queue {@link SchedulingQueue} without paginating
+     * until further processing can be done to them
+     * @param memoryManager {@link MemoryManager} in charge of managing pagination and memory memory frame storage
+     * @param schedulingManager {@link SchedulingManager} in charge of managing {@link SchedulingQueue}s
+     * @param numOfProcesses the number of {@link SimulatedProcess}s to create
+     */
     public static void populateQueuesAndMemory(MemoryManager memoryManager, SchedulingManager schedulingManager, int numOfProcesses) {
         int scriptNum = 1;
         System.out.println("Creating " + numOfProcesses +  " processes to execute");
@@ -43,6 +52,14 @@ public class Main {
             schedulingManager.printQueues();
         }
     }
+
+    /**
+     * Creates a new CPU object and allows it to begin executing processes from the ready queue
+     * It also determines when to move {@link SimulatedProcess}s from the Disk Blocked {@link SchedulingQueue}
+     * This method continues to execute processes from these queues until both {@link SchedulingQueue}s are empty
+     * @param memoryManager {@link MemoryManager} in charge of main memory and paginating processes
+     * @param schedulingManager {@link SchedulingManager} in charge of {@link SchedulingQueue}s
+     */
     public static void beginExecution(MemoryManager memoryManager, SchedulingManager schedulingManager) {
         CPU cpu = new CPU();
         while(!schedulingManager.readyQueueIsEmpty()) {

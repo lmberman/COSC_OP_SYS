@@ -1,6 +1,10 @@
 import java.io.File;
 
+/**
+ * Class for a process in the janis operating system
+ */
 public class SimulatedProcess {
+   
     private long pid;
     private ProcessControlBlock processControlBlock;
 
@@ -34,10 +38,19 @@ public class SimulatedProcess {
         return this.processControlBlock.getPageTable();
     }
 
+    /**
+     * Checks if the {@link ProcessControlBlock} {@link PageTable} has anymore pages by checking 
+     * its size. returns true if the page table size is 0
+     * @return boolean value symbolizing the {@link PageTable#getSize()}
+     */
     public boolean isEmpty(){
         return this.processControlBlock.getPageTable().getSize() == 0;
     }
 
+    /**
+     * Retrieves the next available page in the {@link ProcessControlBlock#getPageTable()}
+     * @return next page in the {@link ProcessControlBlock} {@link PageTable}
+     */
     public Page getNextPage() {
         return this.processControlBlock.getNextPage();
     }
