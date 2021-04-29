@@ -16,7 +16,6 @@ public class ProcessControlBlock {
 
     private long pid;
     private File script;
-    private SchedulingQueue schedulingQueue;
     private PageTable pageTable;
 
     ProcessControlBlock() { }
@@ -40,14 +39,6 @@ public class ProcessControlBlock {
 
     public void setScript(File script) {
         this.script = script;
-    }
-
-    public SchedulingQueue getSchedulingQueue() {
-        return schedulingQueue;
-    }
-
-    public void setSchedulingQueue(SchedulingQueue schedulingQueue) {
-        this.schedulingQueue = schedulingQueue;
     }
 
     public PageTable getPageTable() {
