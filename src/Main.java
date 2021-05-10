@@ -3,6 +3,7 @@ import java.io.File;
 /** 
    @author Lindsei Berman
    @author Cherrie Espineda
+   @author Alfred Ajishe
 **/
 
 public class Main {
